@@ -1,8 +1,8 @@
 import express from "express";
 
-const router = express.Router();
+const QuestionsRouter = express.Router();
 
-router.get('/', (req, res) => {
+QuestionsRouter.get('/', (req, res) => {
     const questions = [
             { _id: 1, name: 'Vladimir Harkonnen', content: 'Am I the drama?' },
             { _id: 2, name: 'Lady Jessica', content: 'Is Paul the Kwisatz Haderach?' },
@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
     res.json(questions);
 })
 
-router.post('/', (req, res) => {
+QuestionsRouter.post('/', (req, res) => {
     res.json(req.body)
 })
 
-router.delete('/:question_id', (req, res) => {
+QuestionsRouter.delete('/:question_id', (req, res) => {
     const _id = req.params.question_id;
 
     res.json(_id)
 })
 
-export default router;
+export default QuestionsRouter;
