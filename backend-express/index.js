@@ -1,9 +1,16 @@
 import express from "express";
+import mongoose from "mongoose";
 import QuestionsRouter from "./questions/questions.js";
+import { MONGO_URI } from "./config/keys.js";
 
 const app = express();
 
 app.use(express.json());
+
+mongoose
+    .connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(res => console.log("Connected to MongoDB!!"))
+            .catch(err => console.log(err))
 
 const port = process.env.port || 5000;
 
