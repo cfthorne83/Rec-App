@@ -11,8 +11,8 @@ router.get( '/', (req, res) => {
 
 router.post( '/', (req, res) => {
     const newQuestion = new Question({
-        name: req.name,
-        content: req.content
+        name: req.body.name,
+        content: req.body.content
     });
 
     newQuestion.save()
