@@ -9,10 +9,11 @@ const render = () => {
     const submitQuestion = (e) => {
         e.preventDefault();
 
+        if (textArea.value === "") return textArea.placeholder = "Question Required...";
         const question = {
             _id: Math.floor(Math.random() * 1000),
-            name: input.value, 
-            content: input.value
+            name: input.value.trim(), 
+            content: input.value.trim(),
         }
         input.value = "";
         textArea.value = "";
@@ -31,6 +32,12 @@ const render = () => {
     const App = document.createElement('div');
     root.append(App);
 
+    const header = document.createElement('header');
+    const title = document.createElement('h1');
+    title.innerText = "RecApp2.0: Frontend DOM Manipulation";
+    header.append(title);
+    App.append(header);
+
     const h1 = document.createElement('h1');
     h1.innerText = "Ask a Question...";
     
@@ -38,28 +45,27 @@ const render = () => {
 
     const input = document.createElement('input');
     input.type = 'text';
-    input.placeholder = " Question Name";
+    input.placeholder = "Question Name";
+    input.name = 'name';
 
     const textArea = document.createElement('textarea');
     textArea.rows = 3;
     textArea.placeholder = "Ask a Question...";
+    textArea.name = "content";
+    textArea.type = "text";
 
     const submit = document.createElement('button');
     submit.innerText = "Submit";
+    submit.type = "text";
 
     form.addEventListener('submit', e => {
         submitQuestion(e);
     })
 
-
     const questionList = document.createElement('ul');
     
-    App.append(h1);
-    App.append(form);
-    form.append(input);
-    form.append(textArea);
-    form.append(submit);
-    App.append(questionList);
+    App.append(h1, form, questionList);
+    form.append(input, textArea, submit);
 
     const generateQuestionsList = () => {
         if (!questions.length) return questionList.innerHTML = "No Questions"
