@@ -30,18 +30,18 @@ const render = () => {
 
     const root = document.getElementById('root');
     const App = document.createElement('div');
+    App.classList.add('App');
     root.append(App);
 
     const header = document.createElement('header');
-    const title = document.createElement('h1');
-    title.innerText = "RecApp2.0: Frontend DOM Manipulation";
-    header.append(title);
+    header.innerHTML = "RecApp2.0: Frontend DOM Manipulation";
     App.append(header);
 
     const h1 = document.createElement('h1');
     h1.innerText = "Ask a Question...";
     
     const form = document.createElement('form');
+    form.classList.add('module');
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -71,16 +71,22 @@ const render = () => {
         if (!questions.length) return questionList.innerHTML = "No Questions"
         
         questions.forEach( question => {
-            const name = document.createElement('h2');
+            const formattedQuestion = document.createElement('div');
+            const name = document.createElement('h3');
             name.innerText = question.name;
-            questionList.append(name);
+            formattedQuestion.append(name);
 
-            const content = document.createElement('li');
+            const content = document.createElement('span');
             content.innerText = question.content;
-            questionList.append(content);
+            formattedQuestion.append(content);
 
             const deleteButt = document.createElement('button');
             deleteButt.innerText = "Delete";
+            formattedQuestion.append(deleteButt);
+
+            formattedQuestion.classList.add('module');
+
+            questionList.append(formattedQuestion);
 
             deleteButt.addEventListener('click', e => {
                 deleteQuestion(question._id);
