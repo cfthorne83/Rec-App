@@ -6,6 +6,18 @@ const render = () => {
             { _id: 3, name: 'Paul Atreides', content: 'Why are my dreams so sandy?' },
         ];
 
+    const submitQuestion = (question) => {
+        questionList.innerHTML = "";
+        questions.push(question);
+        generateQuestionsList();
+    }
+    
+    const deleteQuestion = (_id) => {
+        questionList.innerHTML = "";
+        questions = questions.filter(question => question._id !== _id)
+        generateQuestionsList();
+    }
+
     const root = document.getElementById('root');
     const App = document.createElement('div');
     root.append(App);
@@ -32,16 +44,21 @@ const render = () => {
     App.append(questionList);
 
     const generateQuestionsList = () => {
-        // if (!questions.length) return questionList.innerHTML = "No Questions"
+        if (!questions.length) return questionList.innerHTML = "No Questions"
         
         questions.forEach( question => {
             const name = document.createElement('h2');
             name.innerText = question.name;
-            App.append(name);
+            questionList.append(name);
 
             const content = document.createElement('li');
             content.innerText = question.content;
-            App.append(content)
+            questionList.append(content);
+
+            const deleteButt = document.createElement('button');
+            deleteButt.innerText = "Delete";
+            questionList.append(deleteButt);
+
         })
     }
 
