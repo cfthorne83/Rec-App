@@ -6,7 +6,16 @@ const render = () => {
             { _id: 3, name: 'Paul Atreides', content: 'Why are my dreams so sandy?' },
         ];
 
-    const submitQuestion = (question) => {
+    const submitQuestion = (e) => {
+        e.preventDefault();
+
+        const question = {
+            _id: Math.floor(Math.random() * 1000),
+            name: input.value, 
+            content: input.value
+        }
+        input.value = "";
+        textArea.value = "";
         questionList.innerHTML = "";
         questions.push(question);
         generateQuestionsList();
@@ -26,13 +35,22 @@ const render = () => {
     h1.innerText = "Ask a Question...";
     
     const form = document.createElement('form');
+
     const input = document.createElement('input');
+    input.type = 'text';
     input.placeholder = " Question Name";
+
     const textArea = document.createElement('textarea');
     textArea.rows = 3;
     textArea.placeholder = "Ask a Question...";
-    const button = document.createElement('button');
-    button.innerText = "Submit";
+
+    const submit = document.createElement('button');
+    submit.innerText = "Submit";
+
+    form.addEventListener('submit', e => {
+        submitQuestion(e);
+    })
+
 
     const questionList = document.createElement('ul');
     
@@ -40,7 +58,7 @@ const render = () => {
     App.append(form);
     form.append(input);
     form.append(textArea);
-    form.append(button);
+    form.append(submit);
     App.append(questionList);
 
     const generateQuestionsList = () => {
@@ -57,8 +75,12 @@ const render = () => {
 
             const deleteButt = document.createElement('button');
             deleteButt.innerText = "Delete";
-            questionList.append(deleteButt);
 
+            deleteButt.addEventListener('click', e => {
+                deleteQuestion(question._id);
+            })
+
+            questionList.append(deleteButt);
         })
     }
 
