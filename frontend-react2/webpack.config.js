@@ -6,9 +6,9 @@ module.exports = {
     entry: path.resolve(__dirname, './src/index.js'),
     output: {
         path: path.resolve(__dirname, './public'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
-    devServer : {
+    devServer: {
         static: path.resolve(__dirname, './public')
     },
     module: {
@@ -25,11 +25,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['css-loader', 'style-loader'],
-            }
-        ],
+                use: ['style-loader', 'css-loader']
+            },
+        ] 
     },
     resolve: {
-        extensions: ['jsx', 'js', '*']
+        extensions: [".js", ".jsx", "*"]
     },
-};
+}
