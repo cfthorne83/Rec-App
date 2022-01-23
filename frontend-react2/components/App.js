@@ -25,4 +25,4 @@ export const App = () => {
             <Questions questions={questions}/>
         </>
     )
-}
+};
