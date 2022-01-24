@@ -12,14 +12,14 @@ export const QuestionsForm = ({submitQuestion}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const _id = Math.floor(Math.random * 1000)
-        setQuestion({...question, _id: _id})
+        const _id = Math.floor(Math.random * 1000);
+        setQuestion({...question, _id: _id});
         submitQuestion(question);
+        setQuestion(defaultQuestion);
     };
 
     const handleInput = (e) => {
         setQuestion({...question, name: e.target.value })
-        console.log(question);
     };
 
     const handleText = (e) => {
@@ -31,13 +31,17 @@ export const QuestionsForm = ({submitQuestion}) => {
             <form onSubmit={handleSubmit}>
                 <h1>Submit a Question:</h1>
                 <input 
+                    value={question.name}
                     type='text' 
                     placeholder="Enter Question Name"
                     onChange={handleInput}>
                 </input>
                 <textarea
                     onChange={handleText} 
-                    rows="5">
+                    value={question.content}
+                    rows="5"
+                    placeholder="Ask Away..."
+                    >
                 </textarea>
                 <button>Submit</button>
             </form>
