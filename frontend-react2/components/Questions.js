@@ -19,4 +19,4 @@ export const Questions = ({questions, deleteQuestion}) => {
             {generateQuestionList()}        
         </>
     )
-}
+};
