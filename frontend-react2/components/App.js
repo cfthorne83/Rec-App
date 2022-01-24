@@ -22,7 +22,7 @@ export const App = () => {
     return (
         <>
             <QuestionsForm/>
-            <Questions questions={questions}/>
+            <Questions questions={questions} deleteQuestion={deleteQuestion}/>
         </>
     )
 };
