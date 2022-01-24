@@ -11,7 +11,7 @@ export const App = () => {
     ]);
 
     const submitQuestion = (newquestion) => {
-        setQuestions(...questions, newquestion)
+        setQuestions([...questions, newquestion])
     }
 
     const deleteQuestion = (_id) => {
@@ -21,7 +21,7 @@ export const App = () => {
     
     return (
         <>
-            <QuestionsForm/>
+            <QuestionsForm submitQuestion={submitQuestion}/>
             <Questions questions={questions} deleteQuestion={deleteQuestion}/>
         </>
     )
