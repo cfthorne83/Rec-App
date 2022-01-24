@@ -12,15 +12,13 @@ export const QuestionsForm = ({submitQuestion}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        
-        const _id = Math.floor(Math.random() * 1000);
-        setQuestion({...question, _id: _id});
         submitQuestion(question);
         setQuestion(defaultQuestion);
     };
-
+    
     const handleInput = e => {
-        setQuestion({...question, [e.target.name]: e.target.value})
+        const _id = Math.floor(Math.random() * 1000);
+        setQuestion({...question, [e.target.name]: e.target.value, _id: _id })
     };
 
     return (
