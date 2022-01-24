@@ -18,8 +18,6 @@ export const Questions = ({questions, deleteQuestion}) => {
     
     return (
         <>
-            <h1>Questions</h1>
-            {/* {questionList} */}
             {generateQuestionList()}
         </>
     )
