@@ -3,22 +3,20 @@ import React from "react";
 export const Questions = ({questions, deleteQuestion}) => {
 
     const generateQuestionList = () => {
-        if (!questions.length) return <div>No Questions yet...</div>
+        if (!questions.length) return <div>No Questions...</div>
 
-        return questions.map( question => 
-            <ul key={question._id}>
-                <h2>{question.name}</h2>
-                <li>{question.content}</li>
-                <button onClick={() => deleteQuestion(question._id)}>Delete</button>
-            </ul>
+        return questions.map( q => 
+                <ul key={q._id}>
+                    <h2>{q.name}</h2>
+                    <li>{q.content}</li>
+                    <button onClick={() => deleteQuestion(q._id)}>Delete</button>
+                </ul> 
         )
     };
 
-
-    
     return (
         <>
-            {generateQuestionList()}
+            {generateQuestionList()}        
         </>
     )
-};
+}
