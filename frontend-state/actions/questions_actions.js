@@ -2,18 +2,29 @@ import { createAction } from "@reduxjs/toolkit";
 
 const receiveQuestions = createAction('RECEIVE_QUESTIONS');
 const receiveQuestion = createAction('RECEIVE_QUESTION');
-const deleteQuestion = createAction('DELETE_QUESTIONS');
+const deleteQuestion = createAction('DELETE_QUESTION');
 
-const fetchQuestions = () => dispatch => {
-    return //apirequest.then( questions => {
-        // return dispatch(receiveQuestions(questions))
-    // })
+export const fetchQuestions = () => async dispatch => {
+    try {
+        // dispatch(receiveQuestion);
+    } catch(err) {
+        console.log(err);
+    }
 };
 
-const submitQuestion = () => {
-
+export const submitQuestion = () => async dispatch => {
+    try {
+        // dispatch(receiveQuestion)
+    } catch(err) {
+        console.log(err)
+    }
 };
 
-const deleteQuestion = () => {
+export const deleteQuestion = () => {
+    try {
+        // dispatch(deleteQuestion)
+    } catch(err) {
+        console.log(err)
+    }
 
 };
