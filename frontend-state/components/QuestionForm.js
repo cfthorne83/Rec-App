@@ -13,9 +13,7 @@ export const QuestionsForm = ({GLOBAL_STATE}) => {
     const handleSubmit = e => {
         e.preventDefault();
         question._id = Math.floor(Math.random() * 1000);
-        console.log(GLOBAL_STATE.questions);
         GLOBAL_STATE.submitQuestion(question);
-        console.log(GLOBAL_STATE.question);
         setQuestion(defaultQuestion);
     };
     

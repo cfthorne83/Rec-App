@@ -27,9 +27,6 @@ export const App = () => {
             setState(NEW_STATE);
         },
     });
-
-
-
     
     return (
         <>
