@@ -1,6 +1,8 @@
 import React from "react";
 
-export const Questions = ({questions, deleteQuestion}) => {
+export const Questions = ({GLOBAL_STATE, deleteQuestion}) => {
+
+    const questions = Object.values(GLOBAL_STATE.questions);
 
     const generateQuestionList = () => {
         if (!questions.length) return <div>No Questions...</div>
