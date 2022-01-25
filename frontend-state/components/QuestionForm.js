@@ -6,19 +6,21 @@ const defaultQuestion = {
     content: '',
 };
 
-export const QuestionsForm = ({submitQuestion}) => {
+export const QuestionsForm = ({GLOBAL_STATE}) => {
 
     const [question, setQuestion] = useState(defaultQuestion);
 
     const handleSubmit = e => {
         e.preventDefault();
-        submitQuestion(question);
+        question._id = Math.floor(Math.random() * 1000);
+        console.log(GLOBAL_STATE.questions);
+        GLOBAL_STATE.submitQuestion(question);
+        console.log(GLOBAL_STATE.question);
         setQuestion(defaultQuestion);
     };
     
     const handleInput = e => {
-        const _id = Math.floor(Math.random() * 1000);
-        setQuestion({...question, [e.target.name]: e.target.value, _id: _id })
+        setQuestion({...question, [e.target.name]: e.target.value})
     };
 
     return (

@@ -16,28 +16,25 @@ export const App = () => {
             isLoading: false
         },
         answers: {},
+        submitQuestion: (newquestion) => {
+            const NEW_STATE = {...GLOBAL_STATE};
+            NEW_STATE.questions[newquestion._id] = newquestion;
+            setState(NEW_STATE);
+        },
+        deleteQuestion: (_id) => {
+            const NEW_STATE = {...GLOBAL_STATE};
+            delete NEW_STATE.questions[_id];
+            setState(NEW_STATE);
+        },
     });
 
-    const submitQuestion = (newquestion) => {
-        // const NEW_STATE = {...GLOBAL_STATE};
-        // NEW_STATE.questions[newquestion._id] = newquestion;
-        // setState(NEW_STATE);
 
-        const questions = {...GLOBAL_STATE.questions, [newquestion._id]: newquestion}
-        setState({...GLOBAL_STATE, questions: questions })
-    }
-
-    const deleteQuestion = (_id) => {
-        const NEW_STATE = {...GLOBAL_STATE};
-        delete NEW_STATE.questions[_id];
-        setState(NEW_STATE);
-    }
 
     
     return (
         <>
-            <QuestionsForm submitQuestion={submitQuestion}/>
-            <Questions GLOBAL_STATE={GLOBAL_STATE} deleteQuestion={deleteQuestion}/>
+            <QuestionsForm GLOBAL_STATE={GLOBAL_STATE} />
+            <Questions GLOBAL_STATE={GLOBAL_STATE} />
         </>
     )
 };
