@@ -1,6 +1,6 @@
-import { createStore, configureStore, applyMiddleware, getDefaultMiddleware} from "@reduxjs/toolkit";
+import { createReducer, configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import { QuestionsReducer } from "../reducers/questions_reducer";
+// import { QuestionsReducer } from "../reducers/questions_reducer";
 
 export const configureAppStore = () => {
     const store = configureStore({
