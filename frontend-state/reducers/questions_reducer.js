@@ -1,16 +1,18 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-let initialState = {};
+let initialState = {
+    questions: {}
+};
 
 export const QuestionsReducer = createReducer(initialState, builder => {
     builder
-        .addCase(receiveQuestions, (state, action) => {
-            state.payload;
+        .addCase('RECEIVE_QUESTIONS', (state, action) => {
+            action.payload;
         })
-        .addCase(receiveQuestion, (state, action) => {
-            state[payload._id] = paylaod;
+        .addCase('RECEIVE_QUESTION', (state, action) => {
+            state.questions[action.payload._id] = action.payload;
         })
-        .addCase(deleteQuestion, (state, action) => {
-            delete state[payload._id]
+        .addCase('DELETE_QUESTION', (state, action) => {
+            delete state.questions[action.payload]
         })
 });
