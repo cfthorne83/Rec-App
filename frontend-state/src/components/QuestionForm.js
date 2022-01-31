@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { connect } from "react-redux";
+import { submitQuestion } from "./actions/questions_actions";
 
 const defaultQuestion = {
     _id: null,
@@ -6,14 +8,14 @@ const defaultQuestion = {
     content: '',
 };
 
-export const QuestionsForm = ({GLOBAL_STATE}) => {
+const QuestionsForm = ({submitQuestion}) => {
 
     const [question, setQuestion] = useState(defaultQuestion);
 
     const handleSubmit = e => {
         e.preventDefault();
         question._id = Math.floor(Math.random() * 1000);
-        GLOBAL_STATE.submitQuestion(question);
+        submitQuestion(question);
         setQuestion(defaultQuestion);
     };
     
@@ -46,3 +48,9 @@ export const QuestionsForm = ({GLOBAL_STATE}) => {
         </>
     )
 };
+
+const mdtp = (dispatch) => ({
+    submitQuestion: question => dispatch(submitQuestion(question)),
+})
+
+export default connect(null, mdtp)(QuestionsForm);

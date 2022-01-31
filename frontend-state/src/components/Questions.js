@@ -1,8 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteQuestion } from "./actions/questions_actions";
 
-export const Questions = ({GLOBAL_STATE}) => {
-
-    const questions = Object.values(GLOBAL_STATE.questions);
+const Questions = ({questions, deleteQuestion}) => {
 
     const generateQuestionList = () => {
         if (!questions.length) return <div>No Questions...</div>
@@ -12,7 +12,7 @@ export const Questions = ({GLOBAL_STATE}) => {
                     <h2>{q.name}</h2>
                     <li>{q.content}</li>
                     <button 
-                        onClick={() => GLOBAL_STATE.deleteQuestion(q._id)}
+                        onClick={() => deleteQuestion(q._id)}
                     >
                         Delete
                     </button>
@@ -26,3 +26,13 @@ export const Questions = ({GLOBAL_STATE}) => {
         </>
     )
 };
+
+const mstp = (state, ownProps) => ({
+    questions: state.questions ? Object.values(state.questions) : [],
+});
+
+const mdtp = (dispatch, ownProps) => ({
+    deleteQuestion: (_id) => dispatch(deleteQuestion(_id)),
+})
+
+export default connect(mstp, mdtp)(Questions);

@@ -1,7 +1,20 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import {App} from '../components/App';
+import {App} from './components/App';
+import {configureAppStore} from './components/actions/store/store';
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render( <App/>, document.getElementById('root'))
+
+    const preloadedState = {
+        questions: {
+            1: { _id: 1, name: 'Vladimir Harkonnen', content: 'Am I the drama?' },
+            2: { _id: 2, name: 'Lady Jessica', content: 'Is Paul the Kwisatz Haderach'},
+            3: { _id: 3, name: 'Paul Atreides', content: 'Why are my dreams so sandy?'},
+        },
+    }
+
+    const state = configureAppStore(preloadedState);
+
+    ReactDOM.render( <App state={state}/>, document.getElementById('root'))
 });
