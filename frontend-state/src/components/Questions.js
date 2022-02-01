@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deleteQuestion } from "./actions/questions_actions";
+import { deleteQuestion } from "../actions/questions_actions";
 
 const Questions = ({questions, deleteQuestion}) => {
 

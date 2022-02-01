@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import { submitQuestion } from "./actions/questions_actions";
+import { submitQuestion } from "../actions/questions_actions";
 
 const defaultQuestion = {
     _id: null,

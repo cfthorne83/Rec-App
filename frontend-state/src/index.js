@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import {App} from './components/App';
-import {configureAppStore} from './components/actions/store/store';
+import {configureAppStore} from './store/store';
 
 
 document.addEventListener('DOMContentLoaded', () => {
