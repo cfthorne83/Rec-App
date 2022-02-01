@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
-import { deleteQuestion } from "../actions/questions_actions";
+import { deleteQuestion, fetchQuestions } from "../actions/questions_actions";
 
-const Questions = ({questions, deleteQuestion}) => {
+const Questions = ({deleteQuestion, fetchQuestions, questions}) => {
+    useEffect(() => {
+        fetchQuestions();
+    }, [fetchQuestions])
 
     const generateQuestionList = () => {
         if (!questions.length) return <div>No Questions...</div>
@@ -31,8 +34,10 @@ const mstp = (state, ownProps) => ({
     questions: state.questions ? Object.values(state.questions) : [],
 });
 
-const mdtp = (dispatch, ownProps) => ({
+const mdtp = (dispatch, ownProps) => {
+    return {
+    fetchQuestions: () => dispatch(fetchQuestions()),
     deleteQuestion: _id => dispatch(deleteQuestion(_id)),
-})
+}}
 
 export default connect(mstp, mdtp)(Questions);
