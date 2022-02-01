@@ -7,7 +7,7 @@ const removeQuestion = createAction('DELETE_QUESTION');
 
 export const fetchQuestions = () => async dispatch => {
     try {
-        dispatch(receiveQuestions(res));
+        dispatch(receiveQuestions(res.data));
     } catch(err) {
         console.log(err);
     }
@@ -15,8 +15,8 @@ export const fetchQuestions = () => async dispatch => {
 
 export const submitQuestion = question => async dispatch => {
     try {
-        let res = question;
-        dispatch(receiveQuestion(res))
+        let res.data = question;
+        dispatch(receiveQuestion(res.data))
     } catch(err) {
         console.log(err)
     }
@@ -24,8 +24,8 @@ export const submitQuestion = question => async dispatch => {
 
 export const deleteQuestion = _id => async dispatch => {
     try {
-        let res = _id;
-        dispatch(removeQuestion(res))
+        let res.data = _id;
+        dispatch(removeQuestion(res.data))
     } catch(err) {
         console.log(err)
     }
