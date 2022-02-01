@@ -6,13 +6,7 @@ import {configureAppStore} from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const preloadedState = {
-        questions: {
-            1: { _id: 1, name: 'Vladimir Harkonnen', content: 'Am I the drama?' },
-            2: { _id: 2, name: 'Lady Jessica', content: 'Is Paul the Kwisatz Haderach'},
-            3: { _id: 3, name: 'Paul Atreides', content: 'Why are my dreams so sandy?'},
-        },
-    }
+    const preloadedState = {};
 
     const store = configureAppStore(preloadedState);
 

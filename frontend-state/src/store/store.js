@@ -14,7 +14,11 @@ let initialState = {
 const questionsReducer = createReducer(initialState, builder => {
     builder
         .addCase('RECEIVE_QUESTIONS', (state, action) => {
-            // state.questions = action.payload;
+            let questions = {};
+            action.payload.data.map(question => {
+                questions[question._id] = question;
+            })
+            state.questions = questions;
         })
         .addCase('RECEIVE_QUESTION', (state, action) => {
             state.questions[action.payload._id] = action.payload;
