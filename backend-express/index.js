@@ -2,10 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import QuestionsRouter from "./questions/questions.js";
 import { MONGO_URI } from "./config/keys.js";
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 mongoose
     .connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
