@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     }
 
-    const state = configureAppStore(preloadedState);
+    const store = configureAppStore(preloadedState);
 
-    ReactDOM.render( <App state={state}/>, document.getElementById('root'))
+    ReactDOM.render( <App store={store}/>, document.getElementById('root'))
 });

@@ -31,8 +31,10 @@ const mstp = (state, ownProps) => ({
     questions: state.questions ? Object.values(state.questions) : [],
 });
 
-const mdtp = (dispatch, ownProps) => ({
-    deleteQuestion: (_id) => dispatch(deleteQuestion(_id)),
-})
+const mdtp = (dispatch, ownProps) => {
+    return  {
+            deleteQuestion: (_id) => dispatch(deleteQuestion(_id)),
+            }
+}
 
 export default connect(mstp, mdtp)(Questions);
